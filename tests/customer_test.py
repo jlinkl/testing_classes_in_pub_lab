@@ -2,6 +2,7 @@ import unittest
 from src.customer import Customer
 from src.pub import Pub
 from src.drink import Drink
+from src.food import Food
 
 class TestCustomer(unittest.TestCase):
     def setUp(self):
@@ -25,7 +26,18 @@ class TestCustomer(unittest.TestCase):
 
     def test_change_drunkeness(self):
         drink = Drink("Guiness", 5.00, 4)
-        self.customer.change_drunkeness(drink)
+        self.customer.change_drunkeness(drink.alcohol_level)
         self.assertEqual(4, self.customer.drunkeness)
+
+    def test_buy_food(self):
+        food = Food("Pie", 2.00, -3)
+        pub = Pub("The Prancing Pony", 100.00)
+        self.customer.buy_food(food, pub)
+        self.assertEqual(True, pub.can_serve(self.customer))
+        self.assertEqual(True, self.customer.check_wallet(food.price))
+        # self.assertEqual(True, pub.has_drink(food))
+        self.assertEqual(102.00, pub.till)
+        self.assertEqual(48.00, self.customer.wallet)
+        self.assertEqual(0, self.customer.drunkeness)
 
 
