@@ -10,7 +10,7 @@ class FoodTest(unittest.TestCase):
         self.assertEqual("Pie", self.food.name)
 
     def test_food_rejuvination_level(self):
-        self.assertEqual(-3, self.food.rejuvination_level)
+        self.assertEqual(-10, self.food1.rejuvination_level)
         
     def test_food_price(self):
         self.assertEqual(2.00, self.food.price)

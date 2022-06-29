@@ -4,6 +4,7 @@ class Pub:
         self.name = name
         self.till = till
         self.drinks = []
+        self.stock = {}
 
     def check_age(self, age):
         if age < 18:
@@ -25,15 +26,24 @@ class Pub:
 
     def add_drink(self, drink):
         self.drinks.append(drink)
+        self.stock[drink.name] = drink.stock
 
     def add_to_till(self, price):
         self.till += price
 
     def has_drink(self, drink):
-        for dri in self.drinks:
-            if dri == drink:
-                return True
-        return False
+        if self.stock.get(drink.name):
+            return True
+        else:
+            return False
+
+    def stock_value(self):
+        total = 0
+        for drink in self.drinks:
+            total += self.stock.get(drink.name)
+        return total
+
+
 
 
 

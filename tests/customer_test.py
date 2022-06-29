@@ -10,11 +10,11 @@ class TestCustomer(unittest.TestCase):
         self.customer1 = Customer(20.00, 0, 17)
 
     def test_can_buy_drink(self):
-        drink = Drink("Guiness", 5.00, 4)
+        drink = Drink("Guiness", 5.00, 4, 2)
         self.assertEqual(True, self.customer.check_wallet(drink.price))
 
     def test_buy_drink(self):
-        drink = Drink("Guiness", 5.00, 4)
+        drink = Drink("Guiness", 5.00, 4, 2)
         pub = Pub("The Prancing Pony", 100.00)
         pub.add_drink(drink)
         self.customer.buy_drink(drink, pub)
@@ -25,7 +25,7 @@ class TestCustomer(unittest.TestCase):
         self.assertEqual(45.00, self.customer.wallet)
 
     def test_change_drunkeness(self):
-        drink = Drink("Guiness", 5.00, 4)
+        drink = Drink("Guiness", 5.00, 4, 2)
         self.customer.change_drunkeness(drink.alcohol_level)
         self.assertEqual(4, self.customer.drunkeness)
 
