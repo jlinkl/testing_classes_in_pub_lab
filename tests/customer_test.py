@@ -16,12 +16,16 @@ class TestCustomer(unittest.TestCase):
         drink = Drink("Guiness", 5.00, 4)
         pub = Pub("The Prancing Pony", 100.00)
         pub.add_drink(drink)
+        self.customer.buy_drink(drink, pub)
         self.assertEqual(True, pub.can_serve(self.customer))
         self.assertEqual(True, self.customer.check_wallet(drink.price))
         self.assertEqual(True, pub.has_drink(drink))
-        pub.add_to_till(drink.price)
         self.assertEqual(105.00, pub.till)
-        self.customer.take_from_wallet(drink.price)
         self.assertEqual(45.00, self.customer.wallet)
+
+    def test_change_drunkeness(self):
+        drink = Drink("Guiness", 5.00, 4)
+        self.customer.change_drunkeness(drink)
+        self.assertEqual(4, self.customer.drunkeness)
 
 

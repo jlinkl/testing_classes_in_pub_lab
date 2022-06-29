@@ -1,5 +1,5 @@
 class Drink:
-    def __init__(self, name, price, alchohol_level):
+    def __init__(self, name, price, alcohol_level):
         self.name = name
         self.price = price
-        self.alcohol_level = alchohol_level
+        self.alcohol_level = alcohol_level
