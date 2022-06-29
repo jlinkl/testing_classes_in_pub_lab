@@ -35,7 +35,6 @@ class TestCustomer(unittest.TestCase):
         self.customer.buy_food(food, pub)
         self.assertEqual(True, pub.can_serve(self.customer))
         self.assertEqual(True, self.customer.check_wallet(food.price))
-        # self.assertEqual(True, pub.has_drink(food))
         self.assertEqual(102.00, pub.till)
         self.assertEqual(48.00, self.customer.wallet)
         self.assertEqual(0, self.customer.drunkeness)
